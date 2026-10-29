@@ -37,13 +37,17 @@ Predicting a student's Performance Index from study habits using multiple linear
 
 | Metric | Value |
 |---|---|
-| R² (test) | TODO |
-| MAE (test) | TODO |
+| R² (test) | 0.9884 |
+| MAE (test) | 1.647 |
 
-<!--[Predicted vs Actual](images/predicted_vs_actual.png)-->
+[Predicted vs Actual](images/predicted_vs_actual.png)
 
 ## Key Insights
-> TODO: 3-4 sentences about the most important features and what the coefficients mean.
+
+- **Previous Scores is by far the strongest predictor** (r = 0.92). Each extra point is associated with about 1.02 more points of `Performance Index`, and across its full range (40 to 99) it accounts for roughly 60 points.
+- **Hours Studied is second**: each extra hour is associated with about 2.85 more points (about 23 points across its range of 1 to 9 hours).
+- **Sleep Hours, Sample Question Papers Practiced and Extracurricular Activities have small effects** (about 0.47, 0.19 and 0.57 points per unit). Sleep Hours has a very weak simple correlation (r = 0.05) but still a positive coefficient when the other features are held constant.
+- The features are almost uncorrelated with each other (all |r| < 0.02), so multicollinearity is not a problem. These results show associations in this dataset, not cause and effect.
 
 ## How to Run
 ```bash
@@ -54,4 +58,10 @@ jupyter notebook notebooks/student_performance_mlr.ipynb
 ```
 
 ## What I Learned
-> TODO: a few lines (e.g., dummy variable trap, interpreting coefficients).
+
+- **Dummy variable trap:** a Yes/No column encoded into two columns is redundant (they always sum to 1), so I used `OneHotEncoder(drop='first')`.
+- **Correlation is not the same as a coefficient:** a feature with a weak simple correlation can still have a positive coefficient in a multiple regression, because coefficients are computed holding the other features constant.
+- **Coefficients cannot be compared by size alone** when features have different scales. I compared the total effect (coefficient × range of the feature) instead.
+- **Evaluating on unseen data:** I split the data 80/20 with a fixed `random_state` and measured R² and MAE only on the test set.
+- **Duplicates:** with no ID column I could not tell real duplicates from coincidences, so I dropped them to avoid train/test leakage and wrote down why.
+- **Git workflow:** one small commit per step with a clear message (`feat:`, `docs:`, `chore:`).
