@@ -10,8 +10,8 @@ Predicting a student's Performance Index from study habits using multiple linear
 
 ## Dataset
 - **Name:** Student Performance (Multiple Linear Regression)
-- **Source:** [Kaggle](PUT-KAGGLE-LINK-HERE)
-- **Size:** ~10,000 rows
+- **Source:** [Kaggle](https://www.kaggle.com/code/mohammedhamzamoawad/student-performance/notebook)
+- **Size:** 10,000 rows (9,873 after removing 127 duplicates)
 - **Target:** `Performance Index`
 - **Features:** Hours Studied, Previous Scores, Extracurricular Activities, Sleep Hours, Sample Question Papers Practiced
 
@@ -40,7 +40,7 @@ Predicting a student's Performance Index from study habits using multiple linear
 | R² (test) | TODO |
 | MAE (test) | TODO |
 
-![Predicted vs Actual](images/predicted_vs_actual.png)
+<!--[Predicted vs Actual](images/predicted_vs_actual.png)-->
 
 ## Key Insights
 > TODO: 3-4 sentences about the most important features and what the coefficients mean.
